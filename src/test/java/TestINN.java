@@ -30,7 +30,7 @@ public class TestINN extends BaseSteps {
         innSteps.fillBirthDate(birthDate);
         innSteps.fillPlaceOfBirth(placeOfBirth);
         innSteps.fillCertificateDocument(document);
-        innSteps.fillSerialAndNumber("1111111111"); // заменить на актуальные паспортные данные
+        innSteps.fillSerialAndNumber("4511299805"); // заменить на актуальные паспортные данные
         innSteps.sendRequest();
         innSteps.getInnNumber();
 

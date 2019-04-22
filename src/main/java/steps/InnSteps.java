@@ -3,7 +3,11 @@ package steps;
 import io.qameta.allure.Step;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.InnPage;
 import org.openqa.selenium.Keys;
 import static pages.BasePage.delay;
@@ -60,12 +64,9 @@ public class InnSteps {
     @Step("Получаем номер ИНН")
     public void getInnNumber(){
         innPage.scrollPage(innPage.INN);
-        delay(1);
-
-        //todo сделать явное ожидание появление элемента
-
+        Wait<WebDriver> wait = new WebDriverWait(BaseSteps.getDriver(), 30, 1000);
+        wait.until(ExpectedConditions.visibilityOf(innPage.INN));
         WebElement el = BaseSteps.getDriver().findElement(By.xpath("//*[contains(text(), 'Информация об ИНН найдена.')]"));
         Assert.assertEquals("INN ne poluchen", "Информация об ИНН найдена.", el.getText());
     }
-
 }
