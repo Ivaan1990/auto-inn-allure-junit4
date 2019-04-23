@@ -10,6 +10,8 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.InnPage;
 import org.openqa.selenium.Keys;
+import util.Util;
+
 import static pages.BasePage.delay;
 
 public class InnSteps {
@@ -64,9 +66,9 @@ public class InnSteps {
     @Step("Получаем номер ИНН")
     public void getInnNumber(){
         innPage.scrollPage(innPage.INN);
-        Wait<WebDriver> wait = new WebDriverWait(BaseSteps.getDriver(), 30, 1000);
+        Wait<WebDriver> wait = new WebDriverWait(Util.getDriver(), 30, 1000);
         wait.until(ExpectedConditions.visibilityOf(innPage.INN));
-        WebElement el = BaseSteps.getDriver().findElement(By.xpath("//*[contains(text(), 'Информация об ИНН найдена.')]"));
+        WebElement el = Util.getDriver().findElement(By.xpath("//*[contains(text(), 'Информация об ИНН найдена.')]"));
         Assert.assertEquals("INN ne poluchen", "Информация об ИНН найдена.", el.getText());
     }
 }

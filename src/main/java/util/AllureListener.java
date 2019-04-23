@@ -17,6 +17,6 @@ public class AllureListener extends AllureJunit4 {
 
     @Attachment(type="image/png", value="Скриншот при ошибке")
     public static byte[] takescreenchot(){
-        return ((TakesScreenshot) BaseSteps.getDriver()).getScreenshotAs(OutputType.BYTES);
+        return ((TakesScreenshot) Util.getDriver()).getScreenshotAs(OutputType.BYTES);
     }
 }

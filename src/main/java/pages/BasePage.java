@@ -8,12 +8,13 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import steps.BaseSteps;
+import util.Util;
 
 import java.util.concurrent.TimeUnit;
 
 public class BasePage {
 
-    private WebDriver driver = BaseSteps.getDriver();
+    private WebDriver driver = Util.getDriver();
     private Wait<WebDriver> waiter = new WebDriverWait(driver, 30, 1000);
 
     public BasePage(){
@@ -46,19 +47,19 @@ public class BasePage {
     }
 
     public void waitForElement(String xpath){
-        WebDriverWait wait = new WebDriverWait(BaseSteps.getDriver(), 30);
+        WebDriverWait wait = new WebDriverWait(Util.getDriver(), 30);
         wait.ignoring(NoSuchElementException.class).until((ExpectedCondition<Boolean>) driver ->
                 !isPresent(By.xpath(xpath)));
     }
 
     private boolean isPresent(By locator){
         try {
-            BaseSteps.getDriver().manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
-            return BaseSteps.getDriver().findElement(locator).isDisplayed();
+            Util.getDriver().manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+            return Util.getDriver().findElement(locator).isDisplayed();
         } catch (NoSuchElementException e){
             return false;
         } finally {
-            BaseSteps.getDriver().manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+            Util.getDriver().manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
         }
     }
 
