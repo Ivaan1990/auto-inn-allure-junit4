@@ -4,17 +4,13 @@ import pages.BasePage;
 import steps.AgreementSteps;
 import steps.BaseSteps;
 import steps.InnSteps;
+import util.TestProperties;
+
+import java.util.Properties;
 
 public class TestINN extends BaseSteps {
 
-    // заменить на актуальные данные
-    private String
-            surname = "Юшин",
-            name = "Иван",
-            patronymic = "Евгеньевич",
-            birthDate = "01111990",
-            placeOfBirth = "город Москва",
-            document = "21"; // код документа на сайте
+    private Properties properties = TestProperties.getInstance().getProperties();
 
     @Test
     @DisplayName("Получение ИНН")
@@ -24,15 +20,15 @@ public class TestINN extends BaseSteps {
 
         agreementSteps.aggrement();
         agreementSteps.continueButton();
-        innSteps.fillSurnameField(surname);
-        innSteps.fillFirstName(name);
-        innSteps.fillPatronymicField(patronymic);
-        innSteps.fillBirthDate(birthDate);
-        innSteps.fillPlaceOfBirth(placeOfBirth);
-        innSteps.fillCertificateDocument(document);
-        innSteps.fillSerialAndNumber(""); // заменить на актуальные паспортные данные
+        innSteps.fillSurnameField(properties.getProperty("surname"));
+        innSteps.fillFirstName(properties.getProperty("name"));
+        innSteps.fillPatronymicField(properties.getProperty("patronymic"));
+        innSteps.fillBirthDate(properties.getProperty("birthDate"));
+        innSteps.fillPlaceOfBirth(properties.getProperty("placeOfBirth"));
+        innSteps.fillCertificateDocument(properties.getProperty("document"));
+        innSteps.fillSerialAndNumber("4511299805"); // заменить на актуальные паспортные данные
         innSteps.sendRequest();
         innSteps.getInnNumber();
-
     }
+
 }

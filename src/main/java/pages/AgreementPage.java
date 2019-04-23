@@ -10,5 +10,4 @@ public class AgreementPage extends BasePage{
 
     @FindBy(xpath = "//*[contains(@id, 'btnContinue')]")
     public WebElement buttonContinue;
-
 }
