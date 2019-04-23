@@ -15,6 +15,7 @@ public class TestINN extends BaseSteps {
     @Test
     @DisplayName("Получение ИНН")
     public void Inn(){
+
         AgreementSteps agreementSteps = new AgreementSteps();
         InnSteps innSteps = new InnSteps();
 

@@ -5,7 +5,6 @@ import io.qameta.allure.junit4.AllureJunit4;
 import org.junit.runner.notification.Failure;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import steps.BaseSteps;
 
 public class AllureListener extends AllureJunit4 {
 

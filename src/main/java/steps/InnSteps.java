@@ -12,8 +12,6 @@ import pages.InnPage;
 import org.openqa.selenium.Keys;
 import util.Util;
 
-import static pages.BasePage.delay;
-
 public class InnSteps {
     private InnPage innPage = new InnPage();
 
